@@ -20,18 +20,22 @@ export default function TweetBox() {
 
   const sendTweet = (e) => {
     e.preventDefault();
-    const post = {
-      displayName: "Brandon Libertore",
-      userName: "brandonlibertore",
-      verified: true,
-      text: tweetMessage,
-      image: tweetImage,
-      avatar:
-        "https://pbs.twimg.com/profile_images/1566451434597494785/vkiiW9pv_400x400.jpg",
-    };
-    addDoc(collection(db, "posts"), post);
-    setTweetMessage("");
-    setTweetImage("");
+    if (tweetMessage === "" && tweetImage === "") {
+      alert("Your tweet is empty try adding text or an image!");
+    } else {
+      const post = {
+        displayName: "Brandon Libertore",
+        userName: "brandonlibertore",
+        verified: true,
+        text: tweetMessage,
+        image: tweetImage,
+        avatar:
+          "https://pbs.twimg.com/profile_images/1566451434597494785/vkiiW9pv_400x400.jpg",
+      };
+      addDoc(collection(db, "posts"), post);
+      setTweetMessage("");
+      setTweetImage("");
+    }
   };
   return (
     <div className="tweet__box">
