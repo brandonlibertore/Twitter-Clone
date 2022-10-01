@@ -13,7 +13,6 @@ export default function Post({
   displayName,
   userName,
   verified,
-  timestamp,
   text,
   image,
   avatar,
@@ -21,28 +20,24 @@ export default function Post({
   return (
     <div className="post">
       <div className="post__avatar">
-        <Avatar src="" />
+        <Avatar src={avatar} />
       </div>
       <div className="post__body">
         <div className="post__header">
           <div className="post__header--text">
             <h3>
-              DisplayName{" "}
+              {displayName}{" "}
               <span className="post__header--special">
-                <VerifiedIcon className="post__badge" /> @userName
+                {verified && <VerifiedIcon className="post__badge" />}@
+                {userName}
               </span>
             </h3>
           </div>
           <div className="post__header--description">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Architecto ea provident pariatur quam non ipsa esse ullam earum
-              nisi, reiciendis temporibus eum praesentium necessitatibus
-              doloribus sequi, aliquam dolores itaque minus?
-            </p>
+            <p>{text}</p>
           </div>
         </div>
-        <img src="" alt="IMG" />
+        <img src={image} />
         <div className="post__footer">
           <ChatBubbleOutlineIcon fontSize="small" className="footer__icon" />
           <RepeatIcon fontSize="small" className="footer__icon" />
